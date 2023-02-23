@@ -59,7 +59,7 @@ pnpm dev
 
 ## :parachute: Deployment
 
--   With Docker [see Dockerfile](Dockerfile) (deploy to any PaaS that supports Docker). DigitalOcean app platform is recommended.
+-   With Docker [see Dockerfile](Dockerfile) (deploy to any PaaS that supports Docker or self-host). DigitalOcean app platform is recommended.
 -   [Vercel](vercel.com)
 
 See instructions for deploying on Vercel [here](https://nitro.unjs.io/deploy/providers/vercel).
