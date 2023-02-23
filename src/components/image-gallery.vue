@@ -42,6 +42,8 @@ import { onKeyStroke, useSwipe } from "@vueuse/core";
 import { getImages, getNextImageIndex } from "@/composables";
 import { useRouter } from "vue-router";
 
+const currentImage = useCurrentImage();
+
 const props = defineProps<{
     image: Image;
 }>();
@@ -68,6 +70,14 @@ const close = () => router.push("/");
 
 const swipeableRef = ref();
 
+const navigate = (direction: "LEFT" | "RIGHT") => {
+    const nextIdx = getNextImageIndex(images, props.image.idx, direction);
+    currentImage.value = images[nextIdx];
+    setTimeout(() => {
+        router.push(`/p/${nextIdx}`);
+    }, 150);
+};
+
 const { direction } = useSwipe(swipeableRef, {
     onSwipeEnd() {
         if (direction.value !== "UP") {
@@ -77,14 +87,13 @@ const { direction } = useSwipe(swipeableRef, {
             router.push(`/p/${getNextImageIndex(images, props.image.idx, "RIGHT")}`);
         }
     },
-    passive: true,
 });
 
 onKeyStroke(["ArrowLeft", "a", "A", "w", "W"], () => {
-    router.push(`/p/${getNextImageIndex(images, props.image.idx, "LEFT")}`);
+    navigate("LEFT");
 });
 onKeyStroke(["ArrowRight", "d", "D", "s", "S"], () => {
-    router.push(`/p/${getNextImageIndex(images, props.image.idx, "RIGHT")}`);
+    navigate("RIGHT");
 });
 onKeyStroke("Escape", () => close());
 </script>
