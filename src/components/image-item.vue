@@ -19,7 +19,7 @@
             :loading="loading"
             :preload="preload"
             :alt="image.alt"
-            :img-attrs="{ class: 'w-full h-full rounded-lg object-cover relative z-10' }"
+            :img-attrs="{ class: 'w-full h-full rounded-lg object-cover relative z-10 text-[0px]' }"
         />
         <span class="sr-only">{{ image.alt }}</span>
     </NuxtLink>
