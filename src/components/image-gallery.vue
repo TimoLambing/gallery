@@ -3,6 +3,7 @@
         <NuxtPicture
             :src="image.filepath"
             :quality="1"
+            :width="240"
             :preload="true"
             alt="background"
             :img-attrs="{
