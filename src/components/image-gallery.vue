@@ -1,14 +1,12 @@
 <template>
     <div class="w-full h-full fixed inset-0 overflow-auto flex items-center justify-center" @click="close">
-        <NuxtPicture
+        <NuxtImg
             :src="image.filepath"
             :quality="1"
             :width="240"
             :preload="true"
             alt="background"
-            :img-attrs="{
-                class: 'absolute inset-0 w-full h-full object-cover blur-xl brightness-[0.25]',
-            }"
+            class="absolute inset-0 w-full h-full object-cover blur-xl brightness-[0.25]"
         />
         <div class="max-w-mw w-full h-full flex justify-center items-center">
             <div ref="swipeableRef" class="relative cursor-default" @click.stop="">
