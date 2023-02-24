@@ -99,7 +99,6 @@ onKeyStroke("Escape", () => close());
 
 const navigatePages = () => {
     window.history.pushState(window.history.state, "", `/p/${currentImage.value.idx}`);
-    console.log("navigated");
 };
 
 watch(currentImage, navigatePages);
