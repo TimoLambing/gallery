@@ -4,7 +4,7 @@ https://user-images.githubusercontent.com/47639656/219707847-9f3e63ca-af86-4d0a-
 
 ## :sparkles: Features
 
--   Self hosted (just copy your images to src/public/images)
+-   Self-hosted (just copy your images to src/public/images)
 -   Can be hosted on any static site hosting with Nuxt generate
 -   WASD / Arrow key / touch navigation
 -   Image optimisation, provided by [@nuxt/image-edge](https://github.com/nuxt/image)
