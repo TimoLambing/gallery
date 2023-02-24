@@ -19,7 +19,7 @@ test.describe("Image Gallery", () => {
         await expect(page).toHaveURL("/");
     });
 
-    test("it downloads image on click of download button", async ({ page, baseURL }) => {
+    test("it downloads image on click of download button", async ({ page }) => {
         await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
 
         const downloadPromise = page.waitForEvent("download");
@@ -33,11 +33,7 @@ test.describe("Image Gallery", () => {
         expect(info.url()).toContain(exampleImage.src);
     });
 
-    test("it opens original unoptimised image in new tab on click of source button", async ({
-        page,
-        context,
-        baseURL,
-    }) => {
+    test("it opens original unoptimised image in new tab on click of source button", async ({ page, context }) => {
         await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
 
         const pagePromise = context.waitForEvent("page");
