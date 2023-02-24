@@ -34,6 +34,7 @@ defineProps<{
 const transitionEnabled = ref(false);
 
 const currentImage = useCurrentImage();
+const show = useShow();
 
 const translateStyle = computed(() => {
     if (currentImage.value) {
@@ -48,6 +49,10 @@ onMounted(() => {
 });
 
 const handleClick = async (image: Image) => {
+    show.value = false;
     currentImage.value = image;
+    setTimeout(() => {
+        show.value = true;
+    }, 250);
 };
 </script>
