@@ -28,6 +28,10 @@ describe("ImageItem", async () => {
                     name: "NuxtPicture",
                     template: `<img/>`,
                 },
+                NuxtImg: {
+                    name: "NuxtImg",
+                    template: `<img/>`,
+                },
             },
         },
     });
