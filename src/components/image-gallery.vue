@@ -73,4 +73,10 @@ onKeyStroke(["ArrowRight", "d", "D", "s", "S"], () => {
     navigate("RIGHT");
 });
 onKeyStroke("Escape", () => close());
+
+const navigatePages = () => {
+    window.history.pushState(window.history.state, "", `/p/${currentImage.value.idx}`);
+};
+
+watch(currentImage, navigatePages);
 </script>

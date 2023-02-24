@@ -15,14 +15,6 @@ useHead({
         lang: "en",
     },
 });
-
-const currentImage = useCurrentImage();
-
-const navigate = () => {
-    window.history.pushState(window.history.state, null, `/p/${currentImage.value.idx}`);
-};
-
-watch(currentImage, navigate);
 </script>
 
 <style>
