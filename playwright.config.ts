@@ -24,6 +24,7 @@ const config: PlaywrightTestConfig = {
         command: "pnpm dev",
         url: baseURL,
         timeout: 120 * 1000,
+        reuseExistingServer: true,
     },
 
     use: {

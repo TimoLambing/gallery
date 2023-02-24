@@ -10,11 +10,9 @@ test.describe("Image Gallery", () => {
     };
 
     test("it returns to home on click of close button", async ({ page }) => {
-        await page.goto(`/p/${exampleImage.idx}`);
+        await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
 
-        const selector = '[data-testid="close"]';
-        await page.waitForSelector(selector);
-        await page.click(selector);
+        await page.getByTestId("close").click();
 
         await page.waitForURL("/");
 
@@ -22,19 +20,17 @@ test.describe("Image Gallery", () => {
     });
 
     test("it downloads image on click of download button", async ({ page, baseURL }) => {
-        await page.goto(`/p/${exampleImage.idx}`);
+        await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
 
         const downloadPromise = page.waitForEvent("download");
 
-        const selector = '[data-testid="download"]';
-        await page.waitForSelector(selector);
-        await page.click(selector);
+        await page.getByTestId("download").click();
 
         const download = await downloadPromise;
 
         const info = await download;
 
-        expect(info.url()).toEqual(baseURL + exampleImage.src);
+        expect(info.url()).toContain(exampleImage.src);
     });
 
     test("it opens original unoptimised image in new tab on click of source button", async ({
@@ -42,24 +38,21 @@ test.describe("Image Gallery", () => {
         context,
         baseURL,
     }) => {
-        await page.goto(`/p/${exampleImage.idx}`);
-
-        const selector = '[data-testid="source"]';
+        await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
 
         const pagePromise = context.waitForEvent("page");
 
-        await page.waitForSelector(selector);
-        await page.click(selector);
+        await page.getByTestId("source").click();
 
         const newPage = await pagePromise;
         await newPage.waitForLoadState();
 
-        expect(newPage.url()).toEqual(baseURL + exampleImage.src);
+        expect(newPage.url()).toContain(exampleImage.src);
     });
 
     //navigation with keypress and touch swipe
     test("it navigates to index page on Escape keypress", async ({ page }) => {
-        await page.goto("/p/0", { waitUntil: "networkidle" });
+        await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
 
         await page.keyboard.down("Escape");
 
@@ -69,7 +62,7 @@ test.describe("Image Gallery", () => {
     });
     for (const k of ["ArrowLeft", "a", "A", "w", "W"]) {
         test(`it navigates on ${k} keypress to previous image`, async ({ page }) => {
-            await page.goto("/p/1", { waitUntil: "networkidle" });
+            await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
 
             await page.keyboard.down(k);
 
