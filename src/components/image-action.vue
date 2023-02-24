@@ -2,7 +2,7 @@
     <button
         :aria-label="ariaLabel[action]"
         :data-testid="action"
-        class="p-2 rounded-full duration-100 bg-gray-800 bg-opacity-80 hover:bg-gray-700 focus:bg-gray-700 focus:ring-2 focus:ring-white text-white z-[999] focus:outline-none"
+        class="p-2 rounded-full duration-100 bg-gray-800 bg-opacity-80 hover:bg-gray-700 focus:bg-gray-700 outline-gray-100 outline-2 text-white z-[999]"
         @click="handleClick"
     >
         <ArrowDownOnSquareIcon v-if="action === 'download'" class="w-4 h-4 stroke-white stroke-0" />
