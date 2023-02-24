@@ -27,7 +27,7 @@ import type { Image } from "@/types";
 
 const images = getImages();
 
-const props = defineProps<{
+defineProps<{
     image: Image;
 }>();
 
@@ -43,24 +43,11 @@ const translateStyle = computed(() => {
     }
 });
 
-watch(
-    () => props.image,
-    () => {
-        currentImage.value = props.image;
-    },
-    { immediate: true }
-);
-
 onMounted(() => {
     setTimeout(() => (transitionEnabled.value = true), 300);
 });
 
-const router = useRouter();
-
-const handleClick = (image: Image) => {
+const handleClick = async (image: Image) => {
     currentImage.value = image;
-    setTimeout(() => {
-        router.push(`/p/${image.idx}`);
-    }, 150);
 };
 </script>

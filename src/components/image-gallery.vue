@@ -11,23 +11,22 @@
         />
         <div class="max-w-mw w-full h-full flex justify-center items-center">
             <div ref="swipeableRef" class="relative cursor-default" @click.stop="">
-                <div v-if="showActionButtons" class="absolute top-0 right-0 z-10 p-4 inline-flex gap-4">
+                <div class="absolute top-0 right-0 z-10 p-6 inline-flex gap-4">
                     <ImageAction action="download" :image="image" />
                     <ImageAction action="source" :image="image" />
                 </div>
-                <div v-if="showActionButtons" class="absolute top-0 left-0 z-10 p-4">
+                <div class="absolute top-0 left-0 z-10 p-6">
                     <ImageAction action="close" :image="image" />
                 </div>
                 <NuxtPicture
                     :src="image.filepath"
+                    class="cover"
                     :alt="image.alt"
                     :quality="75"
                     :preload="true"
                     :img-attrs="{
-                        id: image.filename,
                         class: 'max-h-[40rem] h-auto aspect-auto brightness-110 text-[0px]',
                     }"
-                    @load="handleImageLoad"
                 />
             </div>
         </div>
@@ -43,48 +42,27 @@ import { getImages, getNextImageIndex } from "@/composables";
 import { useRouter } from "vue-router";
 
 const currentImage = useCurrentImage();
+const images = getImages();
+const router = useRouter();
+const close = () => router.push("/");
+const swipeableRef = ref();
 
 const props = defineProps<{
     image: Image;
 }>();
 
-const images = getImages();
-
-const showActionButtons = ref(false);
-
-const handleImageLoad = () => {
-    showActionButtons.value = true;
-};
-
-onMounted(() => {
-    const imageElement = document.getElementById(props.image.filename) as HTMLImageElement;
-    if (imageElement) {
-        if (imageElement.complete) {
-            handleImageLoad();
-        }
-    }
-});
-
-const router = useRouter();
-const close = () => router.push("/");
-
-const swipeableRef = ref();
-
 const navigate = (direction: "LEFT" | "RIGHT") => {
     const nextIdx = getNextImageIndex(images, props.image.idx, direction);
     currentImage.value = images[nextIdx];
-    setTimeout(() => {
-        router.push(`/p/${nextIdx}`);
-    }, 150);
 };
 
 const { direction } = useSwipe(swipeableRef, {
     onSwipeEnd() {
         if (direction.value !== "UP") {
-            router.push(`/p/${getNextImageIndex(images, props.image.idx, "LEFT")}`);
+            navigate("LEFT");
         }
         if (direction.value === "LEFT") {
-            router.push(`/p/${getNextImageIndex(images, props.image.idx, "RIGHT")}`);
+            navigate("RIGHT");
         }
     },
 });
