@@ -16,14 +16,17 @@
             <Transition name="image">
                 <div v-if="show" ref="swipeableRef" class="relative cursor-default" @click.stop="">
                     <Transition>
-                        <div v-if="showButtons" class="absolute top-0 right-0 z-10 p-6 inline-flex gap-4">
-                            <ImageAction action="download" :image="image" />
-                            <ImageAction action="source" :image="image" />
-                        </div>
-                    </Transition>
-                    <Transition>
-                        <div v-if="showButtons" class="absolute top-0 left-0 z-10 p-6">
-                            <ImageAction action="close" :image="image" />
+                        <div
+                            v-if="showButtons"
+                            class="absolute top-0 left-0 w-full inline-flex items-center justify-between"
+                        >
+                            <div class="z-10 p-4">
+                                <ImageAction action="close" :image="image" />
+                            </div>
+                            <div class="p-4 inline-flex gap-4">
+                                <ImageAction action="download" :image="image" />
+                                <ImageAction action="source" :image="image" />
+                            </div>
                         </div>
                     </Transition>
                     <NuxtPicture
