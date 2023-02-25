@@ -58,7 +58,7 @@ const close = () => router.push("/");
 const swipeableRef = ref<HTMLDivElement>();
 const show = useShow();
 
-const showButtons = ref(false);
+const showButtons = ref(true);
 
 const props = defineProps<{
     image: Image;
