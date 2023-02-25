@@ -3,8 +3,8 @@
         <Transition>
             <NuxtImg
                 v-if="show"
-                :src="image.filepath"
                 :key="image.idx"
+                :src="image.filepath"
                 :quality="1"
                 :width="240"
                 :preload="true"
@@ -15,13 +15,17 @@
         <div class="max-w-mw w-full h-full flex justify-center items-center">
             <Transition>
                 <div v-if="show" ref="swipeableRef" class="relative cursor-default" @click.stop="">
-                    <div class="absolute top-0 right-0 z-10 p-6 inline-flex gap-4">
-                        <ImageAction action="download" :image="image" />
-                        <ImageAction action="source" :image="image" />
-                    </div>
-                    <div class="absolute top-0 left-0 z-10 p-6">
-                        <ImageAction action="close" :image="image" />
-                    </div>
+                    <Transition>
+                        <div v-if="showButtons" class="absolute top-0 right-0 z-10 p-6 inline-flex gap-4">
+                            <ImageAction action="download" :image="image" />
+                            <ImageAction action="source" :image="image" />
+                        </div>
+                    </Transition>
+                    <Transition>
+                        <div v-if="showButtons" class="absolute top-0 left-0 z-10 p-6">
+                            <ImageAction action="close" :image="image" />
+                        </div>
+                    </Transition>
                     <NuxtPicture
                         :src="image.filepath"
                         class="cover"
@@ -39,18 +43,6 @@
     </div>
 </template>
 
-<style>
-.v-enter-active,
-.v-leave-active {
-    transition: opacity 0.25s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-    opacity: 0;
-}
-</style>
-
 <script setup lang="ts">
 import type { Image } from "@/types";
 import ImageCarousel from "@/components/image-carousel.vue";
@@ -64,10 +56,17 @@ const router = useRouter();
 const close = () => router.push("/");
 const swipeableRef = ref();
 const show = useShow();
+const showButtons = ref(false);
 
 const props = defineProps<{
     image: Image;
 }>();
+
+onMounted(() => {
+    setTimeout(() => {
+        showButtons.value = true;
+    }, 150);
+});
 
 const navigate = (direction: "LEFT" | "RIGHT") => {
     const nextIdx = getNextImageIndex(images, props.image.idx, direction);
@@ -75,7 +74,7 @@ const navigate = (direction: "LEFT" | "RIGHT") => {
     currentImage.value = images[nextIdx];
     setTimeout(() => {
         show.value = true;
-    }, 250);
+    }, 150);
 };
 
 const { direction } = useSwipe(swipeableRef, {
@@ -101,5 +100,23 @@ const navigatePages = () => {
     window.history.pushState(window.history.state, "", `/p/${currentImage.value.idx}`);
 };
 
-watch(currentImage, navigatePages);
+watch(currentImage, () => {
+    showButtons.value = false;
+    navigatePages();
+    setTimeout(() => {
+        showButtons.value = true;
+    }, 150);
+});
 </script>
+
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.25s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+</style>
