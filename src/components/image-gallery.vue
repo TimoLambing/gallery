@@ -74,7 +74,7 @@ const navigate = (direction: "LEFT" | "RIGHT") => {
     currentImage.value = images[nextIdx];
     setTimeout(() => {
         show.value = true;
-    }, 150);
+    }, 250);
 };
 
 const { direction } = useSwipe(swipeableRef, {
