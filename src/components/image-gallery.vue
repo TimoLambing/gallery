@@ -55,19 +55,28 @@ const currentImage = useCurrentImage();
 const images = getImages();
 const router = useRouter();
 const close = () => router.push("/");
-const swipeableRef = ref();
+const swipeableRef = ref<HTMLDivElement>();
 const show = useShow();
+
 const showButtons = ref(false);
 
 const props = defineProps<{
     image: Image;
 }>();
 
-onMounted(() => {
-    setTimeout(() => {
-        showButtons.value = true;
-    }, 250);
-});
+const checkIfShouldDisplayButtons = () => {
+    if (swipeableRef.value) {
+        if (swipeableRef.value.clientWidth > 200) {
+            showButtons.value = true;
+        } else {
+            setTimeout(() => {
+                showButtons.value = true;
+            }, 250);
+        }
+    }
+};
+
+onMounted(checkIfShouldDisplayButtons);
 
 const navigate = (direction: "LEFT" | "RIGHT") => {
     const nextIdx = getNextImageIndex(images, props.image.idx, direction);
@@ -104,9 +113,7 @@ const navigatePages = () => {
 watch(currentImage, () => {
     showButtons.value = false;
     navigatePages();
-    setTimeout(() => {
-        showButtons.value = true;
-    }, 250);
+    checkIfShouldDisplayButtons();
 });
 </script>
 
