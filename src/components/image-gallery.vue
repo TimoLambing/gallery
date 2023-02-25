@@ -65,19 +65,11 @@ const props = defineProps<{
     image: Image;
 }>();
 
-const checkIfShouldDisplayButtons = () => {
-    if (swipeableRef.value) {
-        if (swipeableRef.value.clientWidth > 200) {
-            showButtons.value = true;
-        } else {
-            setTimeout(() => {
-                showButtons.value = true;
-            }, 250);
-        }
-    }
-};
-
-onMounted(checkIfShouldDisplayButtons);
+onMounted(() => {
+    setTimeout(() => {
+        showButtons.value = true;
+    }, 500);
+});
 
 const navigate = (direction: "LEFT" | "RIGHT") => {
     const nextIdx = getNextImageIndex(images, props.image.idx, direction);
@@ -114,7 +106,9 @@ const navigatePages = () => {
 watch(currentImage, () => {
     showButtons.value = false;
     navigatePages();
-    checkIfShouldDisplayButtons();
+    setTimeout(() => {
+        showButtons.value = true;
+    }, 500);
 });
 </script>
 
