@@ -13,7 +13,7 @@
             />
         </Transition>
         <div class="max-w-mw w-full h-full flex justify-center items-center">
-            <Transition>
+            <Transition name="image">
                 <div v-if="show" ref="swipeableRef" class="relative cursor-default" @click.stop="">
                     <Transition>
                         <div v-if="showButtons" class="absolute top-0 right-0 z-10 p-6 inline-flex gap-4">
@@ -44,6 +44,7 @@
 </template>
 
 <script setup lang="ts">
+import { Transition } from "vue";
 import type { Image } from "@/types";
 import ImageCarousel from "@/components/image-carousel.vue";
 import { onKeyStroke, useSwipe } from "@vueuse/core";
@@ -114,9 +115,17 @@ watch(currentImage, () => {
 .v-leave-active {
     transition: opacity 0.25s ease;
 }
-
 .v-enter-from,
 .v-leave-to {
+    opacity: 0;
+}
+
+.image-enter-active,
+.image-leave-active {
+    transition: all 0.25s ease;
+}
+.image-enter-from,
+.image-leave-to {
     opacity: 0;
 }
 </style>
