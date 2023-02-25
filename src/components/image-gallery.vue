@@ -14,7 +14,7 @@
         </Transition>
         <div class="max-w-mw w-full h-full flex justify-center items-center">
             <Transition name="image">
-                <div v-if="show" ref="swipeableRef" class="relative cursor-default" @click.stop="">
+                <div v-if="show" ref="swipeableRef" class="relative min-h-[40rem] cursor-default" @click.stop="">
                     <Transition>
                         <div v-if="showButtons" class="absolute top-0 right-0 z-10 p-6 inline-flex gap-4">
                             <ImageAction action="download" :image="image" />
