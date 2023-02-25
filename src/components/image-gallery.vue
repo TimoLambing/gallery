@@ -18,11 +18,9 @@
                     <Transition>
                         <div
                             v-if="showButtons"
-                            class="absolute top-0 left-0 w-full inline-flex items-center justify-between p-4"
+                            class="absolute top-0 left-0 w-full inline-flex justify-between p-4 z-10"
                         >
-                            <div class="z-10">
-                                <ImageAction action="close" :image="image" />
-                            </div>
+                            <ImageAction action="close" :image="image" />
                             <div class="inline-flex gap-4">
                                 <ImageAction action="download" :image="image" />
                                 <ImageAction action="source" :image="image" />
