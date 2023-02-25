@@ -6,8 +6,8 @@ test.describe("Image Page", () => {
 
         await page.getByTestId("close");
 
-        //wait for transition of buttons (max 250ms)
-        await page.waitForTimeout(500);
+        //wait for transition of buttons (max 500ms)
+        await page.waitForTimeout(1000);
 
         expect(await page.screenshot()).toMatchSnapshot();
     });
