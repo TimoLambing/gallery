@@ -88,10 +88,10 @@ const { direction } = useSwipe(swipeableRef, {
     },
 });
 
-onKeyStroke(["ArrowLeft", "a", "A", "w", "W"], () => {
+onKeyStroke(["ArrowLeft", "ArrowUp", "a", "A", "w", "W"], () => {
     navigate("LEFT");
 });
-onKeyStroke(["ArrowRight", "d", "D", "s", "S"], () => {
+onKeyStroke(["ArrowRight", "ArrowDown", "d", "D", "s", "S"], () => {
     navigate("RIGHT");
 });
 onKeyStroke("Escape", () => close());

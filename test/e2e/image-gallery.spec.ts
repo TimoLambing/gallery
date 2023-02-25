@@ -56,7 +56,7 @@ test.describe("Image Gallery", () => {
 
         await expect(page).toHaveURL("/");
     });
-    for (const k of ["ArrowLeft", "a", "A", "w", "W"]) {
+    for (const k of ["ArrowLeft", "ArrowUp", "a", "A", "w", "W"]) {
         test(`it navigates on ${k} keypress to previous image`, async ({ page }) => {
             await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
 
@@ -67,7 +67,7 @@ test.describe("Image Gallery", () => {
             await expect(page).toHaveURL("/p/0");
         });
     }
-    for (const k of ["ArrowRight", "d", "D", "s", "S"]) {
+    for (const k of ["ArrowRight", "ArrowDown", "d", "D", "s", "S"]) {
         test(`it navigates on ${k} keypress to next image`, async ({ page }) => {
             await page.goto("/p/0", { waitUntil: "networkidle" });
 
