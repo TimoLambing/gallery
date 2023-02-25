@@ -65,7 +65,7 @@ const props = defineProps<{
 onMounted(() => {
     setTimeout(() => {
         showButtons.value = true;
-    }, 200);
+    }, 250);
 });
 
 const navigate = (direction: "LEFT" | "RIGHT") => {
@@ -105,7 +105,7 @@ watch(currentImage, () => {
     navigatePages();
     setTimeout(() => {
         showButtons.value = true;
-    }, 200);
+    }, 250);
 });
 </script>
 
