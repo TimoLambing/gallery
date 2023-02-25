@@ -7,6 +7,7 @@ https://user-images.githubusercontent.com/47639656/219707847-9f3e63ca-af86-4d0a-
 -   Self-hosted (just copy your images to src/public/images)
 -   Can be hosted on any static site hosting with Nuxt generate
 -   WASD / Arrow key / touch navigation
+-   Support of different aspect ratios
 -   Image optimisation, provided by [@nuxt/image-edge](https://github.com/nuxt/image)
 -   Tailwind CSS for styling
 -   ESLint + Prettier for code format and styling
@@ -28,7 +29,7 @@ Alt image descriptions are generated from the filenames.
 
 -   [x] Initial release
 -   [ ] Add authentication support
--   [ ] Full SSG support
+-   [ ] Full SSG support for the ipx provider
 
 ## :rocket: Getting Started
 
