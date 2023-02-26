@@ -15,18 +15,13 @@
         <div class="max-w-mw w-full h-full flex justify-center items-center">
             <Transition name="image">
                 <div v-if="show" ref="swipeableRef" class="relative cursor-default" @click.stop="">
-                    <Transition>
-                        <div
-                            v-if="showButtons"
-                            class="absolute top-0 left-0 w-full inline-flex justify-between p-4 z-10"
-                        >
-                            <ImageAction action="close" :image="image" />
-                            <div class="inline-flex gap-4">
-                                <ImageAction action="download" :image="image" />
-                                <ImageAction action="source" :image="image" />
-                            </div>
+                    <div class="absolute top-0 w-full inline-flex justify-between p-4 z-10">
+                        <ImageAction action="close" :image="image" />
+                        <div class="inline-flex gap-4">
+                            <ImageAction action="download" :image="image" />
+                            <ImageAction action="source" :image="image" />
                         </div>
-                    </Transition>
+                    </div>
                     <NuxtPicture
                         :src="image.filepath"
                         class="cover"
@@ -59,17 +54,9 @@ const close = () => router.push("/");
 const swipeableRef = ref<HTMLDivElement>();
 const show = useShow();
 
-const showButtons = ref(false);
-
 const props = defineProps<{
     image: Image;
 }>();
-
-onMounted(() => {
-    setTimeout(() => {
-        showButtons.value = true;
-    }, 350);
-});
 
 const navigate = (direction: "LEFT" | "RIGHT") => {
     const nextIdx = getNextImageIndex(images, props.image.idx, direction);
@@ -104,11 +91,7 @@ const navigatePages = () => {
 };
 
 watch(currentImage, () => {
-    showButtons.value = false;
     navigatePages();
-    setTimeout(() => {
-        showButtons.value = true;
-    }, 350);
 });
 </script>
 
