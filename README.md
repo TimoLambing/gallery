@@ -64,7 +64,7 @@ pnpm dev
 ## :parachute: Supported  production deployment methods
 
 -   With Docker [see Dockerfile](Dockerfile) (deploy to any PaaS that supports Docker or self-host). DigitalOcean app platform is recommended.
--   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fc1llo%2Fgallery)
+-   With Vercel: [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fc1llo%2Fgallery)
 
 **Note** to host with Docker you will need to change the image provider to the self-hosted [`ipx`](https://v1.image.nuxtjs.org/providers/ipx) provider within the Nuxt config:
 
