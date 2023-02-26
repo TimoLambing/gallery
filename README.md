@@ -67,7 +67,8 @@ Read how to configure here: [@kevinmarrec/nuxt-pwa](https://github.com/kevinmarr
 
 By default it is enabled if the `NODE_ENV` environment variable is not equal to `development`.
 
-When enabled, any cached content/pages will be available offline.
+When enabled, any cached (already opened) content/pages will be available offline. A future goal
+is to have full precaching with workbox of all assets on install to enable it to work fully offline.
 
 It is possible to add custom service workers with the module.
 
