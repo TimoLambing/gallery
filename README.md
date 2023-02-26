@@ -46,7 +46,7 @@ These instructions will help you set up a production deployment as fast as possi
 
 3. Commit & push changes to see your brand new image gallery in action!
 
-## Local Development
+## :computer: Local Development
 
 _Note_ this project uses `pnpm` as the package manager. Replace with `npm run` or `yarn` if needed.
 
