@@ -1,4 +1,4 @@
-# Gallery - an image gallery made with Nuxt 3 :tada:
+# Gallery - a PWA image gallery made with Nuxt 3 :tada:
 
 https://user-images.githubusercontent.com/47639656/219707847-9f3e63ca-af86-4d0a-9f0a-dcf2c9ccf1da.mp4
 
@@ -8,6 +8,7 @@ https://user-images.githubusercontent.com/47639656/219707847-9f3e63ca-af86-4d0a-
 -   Can be hosted on any static site hosting with Nuxt generate
 -   WASD / Arrow key / touch navigation
 -   Support of different aspect ratios
+-   [PWA functionality]() provided by [@kevinmarrec/nuxt-pwa](https://github.com/kevinmarrec/nuxt-pwa-module)
 -   Image optimisation, provided by [@nuxt/image-edge](https://github.com/nuxt/image)
 -   Tailwind CSS for styling
 -   ESLint + Prettier for code format and styling
@@ -60,6 +61,15 @@ Development mode
 ```
 pnpm dev
 ```
+## :spider_web: PWA functionality
+
+Read how to configure here: [@kevinmarrec/nuxt-pwa](https://github.com/kevinmarrec/nuxt-pwa-module)
+
+By default it is enabled if the `NODE_ENV` environment variable is not equal to `development`.
+
+When enabled, any cached content/pages will be available offline.
+
+It is possible to add custom service workers with the module.
 
 ## :parachute: Supported  production deployment methods
 
