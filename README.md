@@ -34,9 +34,17 @@ Alt image descriptions are generated from the filenames.
 -   [ ] Add authentication support
 -   [ ] Full SSG support for the ipx provider
 
-## :rocket: Getting Started
+## :rocket: Quick Start
 
-These instructions will help you set up a local development environment or deploy in production.
+These instructions will help you set up a production deployment as fast as possible.
+
+1. Clone the repo or use the Vercel deploy button below to do it automatically.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fc1llo%2Fgallery)
+
+2. Delete all images in `src/public/images` and replace with your own.
+
+3. Commit & push changes to see your brand new image gallery in action!
 
 ## Local Development
 
