@@ -45,7 +45,6 @@
 </template>
 
 <script setup lang="ts">
-import { Transition } from "vue";
 import type { Image } from "@/types";
 import ImageCarousel from "@/components/image-carousel.vue";
 import { onKeyStroke, useSwipe } from "@vueuse/core";
