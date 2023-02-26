@@ -15,9 +15,9 @@ export default defineNuxtConfig({
             target: "esnext",
         },
     },
-    modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "vite-plugin-vue-type-imports/nuxt"],
+    modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "vite-plugin-vue-type-imports/nuxt", "@kevinmarrec/nuxt-pwa"],
     image: {
-        provider: "vercel",
+        provider: "ipx",
         screens: {
             xxs: 240,
             xs: 320,
@@ -27,6 +27,12 @@ export default defineNuxtConfig({
             xl: 1280,
             xxl: 1536,
             "2xl": 1536,
+        },
+    },
+    pwa: {
+        workbox: {
+            //set to false if PWA functionality is unwanted
+            enabled: process.env.NODE_ENV !== "development",
         },
     },
     app: {
