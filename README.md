@@ -16,6 +16,8 @@ https://user-images.githubusercontent.com/47639656/219707847-9f3e63ca-af86-4d0a-
 All your images are automatically imported from the `src/public/images` folder!
 Alt image descriptions are generated from the filenames.
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fc1llo%2Fgallery)
+
 ## :camera_flash: Image credits
 
 -   https://unsplash.com/photos/PNKwdJ8WetM Atacama Desert Chile
@@ -62,7 +64,7 @@ pnpm dev
 ## :parachute: Supported  production deployment methods
 
 -   With Docker [see Dockerfile](Dockerfile) (deploy to any PaaS that supports Docker or self-host). DigitalOcean app platform is recommended.
--   [Vercel](vercel.com)
+-   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fc1llo%2Fgallery)
 
 **Note** to host with Docker you will need to change the image provider to the self-hosted [`ipx`](https://v1.image.nuxtjs.org/providers/ipx) provider within the Nuxt config:
 
