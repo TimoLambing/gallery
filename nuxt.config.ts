@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     },
     modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "vite-plugin-vue-type-imports/nuxt", "@kevinmarrec/nuxt-pwa"],
     image: {
-        provider: "ipx",
+        provider: "vercel",
         screens: {
             xxs: 240,
             xs: 320,
