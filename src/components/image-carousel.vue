@@ -16,7 +16,14 @@
                 } overflow-hidden hover:brightness-110 focus:brightness-110 duration-200 will-change-auto w-24 h-12 border-none outline-none bg-transparent`"
                 @click="handleClick(i)"
             >
-                <NuxtImg :preload="true" :alt="i.alt" :src="i.filepath" :width="240" :quality="50" />
+                <NuxtImg
+                    :preload="true"
+                    :alt="i.alt"
+                    :src="i.filepath"
+                    :width="240"
+                    :quality="50"
+                    class="w-full h-full object-cover object-center"
+                />
             </button>
         </div>
     </div>
