@@ -3,8 +3,8 @@
         <Transition>
             <NuxtImg
                 v-if="show"
-                :key="image.idx"
-                :src="image.filepath"
+                :key="currentImage.idx"
+                :src="currentImage.filepath"
                 :quality="1"
                 :width="240"
                 :preload="true"
@@ -20,17 +20,17 @@
                             v-if="showButtons"
                             class="absolute top-0 left-0 w-full inline-flex justify-between p-4 z-10"
                         >
-                            <ImageAction action="close" :image="image" />
+                            <ImageAction action="close" :image="currentImage" />
                             <div class="inline-flex gap-4">
-                                <ImageAction action="download" :image="image" />
-                                <ImageAction action="source" :image="image" />
+                                <ImageAction action="download" :image="currentImage" />
+                                <ImageAction action="source" :image="currentImage" />
                             </div>
                         </div>
                     </Transition>
                     <NuxtPicture
-                        :src="image.filepath"
+                        :src="currentImage.filepath"
                         class="cover"
-                        :alt="image.alt"
+                        :alt="currentImage.alt"
                         :quality="75"
                         :preload="true"
                         :img-attrs="{
@@ -40,12 +40,11 @@
                 </div>
             </Transition>
         </div>
-        <ImageCarousel :image="image" />
+        <ImageCarousel />
     </div>
 </template>
 
 <script setup lang="ts">
-import type { Image } from "@/types";
 import ImageCarousel from "@/components/image-carousel.vue";
 import { onKeyStroke, useSwipe, useElementSize } from "@vueuse/core";
 import { getImages, getNextImageIndex } from "@/composables";
@@ -65,12 +64,8 @@ const showButtons = computed(() => {
     return width.value > 100 && height.value > 40;
 });
 
-const props = defineProps<{
-    image: Image;
-}>();
-
 const navigate = (direction: "LEFT" | "RIGHT") => {
-    const nextIdx = getNextImageIndex(images, props.image.idx, direction);
+    const nextIdx = getNextImageIndex(images, currentImage.value.idx, direction);
     show.value = false;
     currentImage.value = images[nextIdx];
     setTimeout(() => {

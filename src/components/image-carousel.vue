@@ -34,24 +34,19 @@ import type { Image } from "@/types";
 
 const images = getImages();
 
-defineProps<{
-    image: Image;
-}>();
-
 const transitionEnabled = ref(false);
 
 const currentImage = useCurrentImage();
 const show = useShow();
 
 const translateStyle = computed(() => {
-    if (currentImage.value) {
-        return {
-            transform: `translate3d(-${currentImage.value.idx * 100}px, 0px, 0px)`,
-        };
-    }
+    return {
+        transform: `translate3d(-${currentImage.value.idx * 100}px, 0px, 0px)`,
+    };
 });
 
 onMounted(() => {
+    //prevents initial transition from happening on load
     setTimeout(() => (transitionEnabled.value = true), 300);
 });
 
