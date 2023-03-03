@@ -47,7 +47,7 @@
 <script setup lang="ts">
 import type { Image } from "@/types";
 import ImageCarousel from "@/components/image-carousel.vue";
-import { onKeyStroke, useSwipe } from "@vueuse/core";
+import { onKeyStroke, useSwipe, useElementSize } from "@vueuse/core";
 import { getImages, getNextImageIndex } from "@/composables";
 import { useRouter } from "vue-router";
 
@@ -58,17 +58,16 @@ const close = () => router.push("/");
 const swipeableRef = ref<HTMLDivElement>();
 const show = useShow();
 
-const showButtons = ref(false);
+const { width, height } = useElementSize(swipeableRef);
+
+const showButtons = computed(() => {
+    //prevents buttons showing/shifting if parent hasn't reached full size.
+    return width.value > 100 && height.value > 40;
+});
 
 const props = defineProps<{
     image: Image;
 }>();
-
-onMounted(() => {
-    setTimeout(() => {
-        showButtons.value = true;
-    }, 350);
-});
 
 const navigate = (direction: "LEFT" | "RIGHT") => {
     const nextIdx = getNextImageIndex(images, props.image.idx, direction);
@@ -101,14 +100,7 @@ onKeyStroke("Escape", () => close());
 const navigatePages = () => {
     window.history.pushState(window.history.state, "", `/p/${currentImage.value.idx}`);
 };
-
-watch(currentImage, () => {
-    showButtons.value = false;
-    navigatePages();
-    setTimeout(() => {
-        showButtons.value = true;
-    }, 350);
-});
+watch(currentImage, navigatePages);
 </script>
 
 <style scoped>
