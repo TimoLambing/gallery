@@ -51,10 +51,12 @@ onMounted(() => {
 });
 
 const handleClick = async (image: Image) => {
-    show.value = false;
-    currentImage.value = image;
-    setTimeout(() => {
-        show.value = true;
-    }, 250);
+    if (image.idx !== currentImage.value.idx) {
+        show.value = false;
+        currentImage.value = image;
+        setTimeout(() => {
+            show.value = true;
+        }, 250);
+    }
 };
 </script>
