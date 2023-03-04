@@ -18,5 +18,9 @@
 import ImageItem from "@/components/image-item.vue";
 import { getImages } from "@/composables";
 
+definePageMeta({
+    layout: "default",
+});
+
 const images = getImages();
 </script>

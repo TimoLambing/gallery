@@ -18,17 +18,13 @@ useHead({
 </script>
 
 <style>
-html,
-body {
-    @apply bg-background h-full;
-}
-
-.page-enter-active,
-.page-leave-active {
+.layout-enter-active,
+.layout-leave-active {
     transition: all 350ms;
 }
-.page-enter-from,
-.page-leave-to {
+.layout-enter-from,
+.layout-leave-to {
+    filter: grayscale(0.5);
     opacity: 0;
     filter: blur(1rem);
 }

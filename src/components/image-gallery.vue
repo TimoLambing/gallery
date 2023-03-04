@@ -1,5 +1,9 @@
 <template>
-    <div class="w-full h-full fixed inset-0 overflow-auto flex items-center justify-center" @click="close">
+    <div
+        v-if="currentImage"
+        class="w-full h-full fixed inset-0 overflow-auto flex items-center justify-center"
+        @click="close"
+    >
         <Transition>
             <NuxtImg
                 v-if="show"
@@ -40,21 +44,18 @@
                 </div>
             </Transition>
         </div>
-        <ImageCarousel />
     </div>
 </template>
 
 <script setup lang="ts">
-import ImageCarousel from "@/components/image-carousel.vue";
-import { onKeyStroke, useSwipe, useElementSize } from "@vueuse/core";
-import { getImages, getNextImageIndex } from "@/composables";
+import useGalleryNavigation from "@/composables/useGalleryNavigation";
+import { useElementSize } from "@vueuse/core";
 import { useRouter } from "vue-router";
 
 const currentImage = useCurrentImage();
-const images = getImages();
 const router = useRouter();
 const close = () => router.push("/");
-const swipeableRef = ref<HTMLDivElement>();
+const swipeableRef = ref();
 const show = useShow();
 
 const { width, height } = useElementSize(swipeableRef);
@@ -64,38 +65,7 @@ const showButtons = computed(() => {
     return width.value > 100 && height.value > 40;
 });
 
-const navigate = (direction: "LEFT" | "RIGHT") => {
-    const nextIdx = getNextImageIndex(images, currentImage.value.idx, direction);
-    show.value = false;
-    currentImage.value = images[nextIdx];
-    setTimeout(() => {
-        show.value = true;
-    }, 250);
-};
-
-const { direction } = useSwipe(swipeableRef, {
-    onSwipeEnd() {
-        if (direction.value !== "UP") {
-            navigate("LEFT");
-        }
-        if (direction.value === "LEFT") {
-            navigate("RIGHT");
-        }
-    },
-});
-
-onKeyStroke(["ArrowLeft", "ArrowUp", "a", "A", "w", "W"], () => {
-    navigate("LEFT");
-});
-onKeyStroke(["ArrowRight", "ArrowDown", "d", "D", "s", "S"], () => {
-    navigate("RIGHT");
-});
-onKeyStroke("Escape", () => close());
-
-const navigatePages = () => {
-    window.history.pushState(window.history.state, "", `/p/${currentImage.value.idx}`);
-};
-watch(currentImage, navigatePages);
+useGalleryNavigation(swipeableRef);
 </script>
 
 <style scoped>

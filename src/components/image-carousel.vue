@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed inset-x-0 bottom-0 overflow-hidden bg-gradient-to-b from-black/0 to-black/60">
+    <div v-if="currentImage" class="fixed inset-x-0 bottom-0 overflow-hidden bg-gradient-to-b from-black/0 to-black/60">
         <div
             :class="`mx-auto mt-12 mb-12 inline-flex ml-[50%] will-change-auto ${
                 transitionEnabled ? 'duration-300' : ''
@@ -33,6 +33,7 @@
 import type { Image } from "@/types";
 
 const images = getImages();
+const router = useRouter();
 
 const transitionEnabled = ref(false);
 
@@ -40,6 +41,9 @@ const currentImage = useCurrentImage();
 const show = useShow();
 
 const translateStyle = computed(() => {
+    if (!currentImage.value) {
+        return undefined;
+    }
     return {
         transform: `translate3d(-${currentImage.value.idx * 100}px, 0px, 0px)`,
     };
@@ -51,9 +55,10 @@ onMounted(() => {
 });
 
 const handleClick = async (image: Image) => {
-    if (image.idx !== currentImage.value.idx) {
+    if (currentImage.value && image.idx !== currentImage.value.idx) {
         show.value = false;
         currentImage.value = image;
+        router.push(`/p/${image.idx}`);
         setTimeout(() => {
             show.value = true;
         }, 250);

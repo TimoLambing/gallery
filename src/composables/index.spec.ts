@@ -95,12 +95,12 @@ describe("downloadImage", () => {
 
 describe("getNextImageIndex", () => {
     it("should give correct next index from zero in LEFT direction", () => {
-        const nextIndex = getNextImageIndex(Array(5).fill(0), 0, "LEFT");
+        const nextIndex = getNextImageIndex(Array(5).fill(0), 0, "PREV");
         expect(nextIndex).toEqual(Array(5).fill(0).length - 1);
     });
 
     it("should give correct next index from highest index in RIGHT direction", () => {
-        const nextIndex = getNextImageIndex(Array(5).fill(0), 4, "RIGHT");
+        const nextIndex = getNextImageIndex(Array(5).fill(0), 4, "NEXT");
         expect(nextIndex).toEqual(0);
     });
 });

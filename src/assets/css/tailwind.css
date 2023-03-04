@@ -6,4 +6,8 @@
     :root {
         color-scheme: dark;
     }
+    html,
+    body {
+        @apply bg-background h-full;
+    }
 }

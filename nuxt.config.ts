@@ -36,7 +36,11 @@ export default defineNuxtConfig({
         },
     },
     app: {
-        pageTransition: { name: "page", mode: "out-in", duration: 350 },
+        layoutTransition: {
+            name: "layout",
+            mode: "out-in",
+            duration: 350,
+        },
     },
     tailwindcss: {
         cssPath: "@/assets/css/tailwind.css",

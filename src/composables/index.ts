@@ -30,8 +30,8 @@ export const downloadImage = (image: Image) => {
     document.body.removeChild(a);
 };
 
-export const getNextImageIndex = (images: Image[], currentIndex: number, direction: "LEFT" | "RIGHT") => {
-    const delta = direction === "LEFT" ? -1 : 1;
+export const getNextImageIndex = (images: Image[], currentIndex: number, direction: "PREV" | "NEXT") => {
+    const delta = direction === "PREV" ? -1 : 1;
     const nextIndex = (currentIndex + delta + images.length) % images.length;
     return nextIndex;
 };
