@@ -1,8 +1,8 @@
 import { onKeyStroke, useSwipe } from "@vueuse/core";
 import { getImages, getNextImageIndex } from "@/composables";
 
-export const prevNavigationKeys = ["ArrowLeft", "ArrowUp", "a", "A", "w", "W"];
-export const nextNavigationKeys = ["ArrowRight", "ArrowDown", "d", "D", "s", "S"];
+export const PREV_NAVIGATION_KEYS = ["ArrowLeft", "ArrowUp", "a", "A", "w", "W"];
+export const NEXT_NAVIGATION_KEYS = ["ArrowRight", "ArrowDown", "d", "D", "s", "S"];
 
 export const useGalleryNavigation = (swipeableRef: Ref<HTMLElement>) => {
     const show = useShow();
@@ -33,10 +33,10 @@ export const useGalleryNavigation = (swipeableRef: Ref<HTMLElement>) => {
         },
     });
 
-    onKeyStroke(prevNavigationKeys, () => {
+    onKeyStroke(PREV_NAVIGATION_KEYS, () => {
         navigateWithTransition("PREV");
     });
-    onKeyStroke(nextNavigationKeys, () => {
+    onKeyStroke(NEXT_NAVIGATION_KEYS, () => {
         navigateWithTransition("NEXT");
     });
     onKeyStroke("Escape", () => router.push("/"));
