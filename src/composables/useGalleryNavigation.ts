@@ -24,7 +24,7 @@ export const useGalleryNavigation = (swipeableRef: Ref<HTMLElement>) => {
 
     const { direction } = useSwipe(swipeableRef, {
         onSwipeEnd() {
-            if (direction.value !== "UP") {
+            if (direction.value === "RIGHT") {
                 navigateWithTransition("PREV");
             }
             if (direction.value === "LEFT") {
