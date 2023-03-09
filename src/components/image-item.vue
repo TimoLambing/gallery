@@ -5,7 +5,7 @@
     >
         <NuxtImg
             :src="image.filepath"
-            :width="240"
+            :width="60"
             :loading="loading"
             :preload="preload"
             :quality="1"

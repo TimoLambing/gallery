@@ -10,7 +10,7 @@
                 :key="currentImage.idx"
                 :src="currentImage.filepath"
                 :quality="1"
-                :width="240"
+                :width="60"
                 :preload="true"
                 alt="background"
                 class="absolute inset-0 w-full h-full object-cover blur-xl brightness-[0.25]"
