@@ -1,7 +1,7 @@
 <template>
     <NuxtLink
         :href="`/p/${image.idx}`"
-        class="relative outline-gray-100 outline-2 hover:cursor-zoom-in brightness-90 md:focus:brightness-100 md:hover:brightness-100 rounded-lg will-change-auto transition duration-200"
+        class="w-full h-full aspect-[3/2] relative outline-gray-100 outline-2 hover:cursor-zoom-in brightness-90 md:focus:brightness-100 md:hover:brightness-100 rounded-lg will-change-auto transition duration-200"
     >
         <NuxtImg
             :src="image.filepath"
