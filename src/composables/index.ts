@@ -3,7 +3,7 @@ import slugify from "slugify";
 
 import type { Image } from "@/types";
 
-const imageGlob = import.meta.glob("../public/images/*.{jpg,jpeg,png,webp}", {
+const imageGlob = import.meta.glob("@/public/images/*.{jpg,jpeg,png,webp}", {
     eager: true,
 });
 

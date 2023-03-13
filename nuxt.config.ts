@@ -14,6 +14,11 @@ export default defineNuxtConfig({
         build: {
             target: "esnext",
         },
+        resolve: {
+            alias: {
+                "@/*": "src/*",
+            },
+        },
     },
     modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "vite-plugin-vue-type-imports/nuxt", "@kevinmarrec/nuxt-pwa"],
     image: {
