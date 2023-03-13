@@ -7,6 +7,7 @@ https://user-images.githubusercontent.com/47639656/219707847-9f3e63ca-af86-4d0a-
 -   Self-hosted (just copy your images to src/public/images)
 -   Can be hosted on any static site hosting with Nuxt generate
 -   WASD / Arrow key / touch navigation
+-   Image support includes `.webp` `.jpg` `.png` formats + [more!](https://v1.image.nuxtjs.org/components/nuxt-img#format)
 -   Support of different aspect ratios
 -   [PWA functionality]() provided by [@kevinmarrec/nuxt-pwa](https://github.com/kevinmarrec/nuxt-pwa-module)
 -   Image optimisation, provided by [@nuxt/image-edge](https://github.com/nuxt/image)
