@@ -33,12 +33,10 @@
 import type { Image } from "@/types";
 
 const images = getImages();
-const router = useRouter();
 
 const transitionEnabled = ref(false);
 
 const currentImage = useCurrentImage();
-const show = useShow();
 
 const translateStyle = computed(() => {
     if (!currentImage.value) {
@@ -54,14 +52,7 @@ onMounted(() => {
     setTimeout(() => (transitionEnabled.value = true), 300);
 });
 
-const handleClick = async (image: Image) => {
-    if (currentImage.value && image.idx !== currentImage.value.idx) {
-        show.value = false;
-        currentImage.value = image;
-        router.push(`/p/${image.idx}`);
-        setTimeout(() => {
-            show.value = true;
-        }, 250);
-    }
+const handleClick = (image: Image) => {
+    useNavigateWithTransition(undefined, image);
 };
 </script>
