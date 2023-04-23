@@ -35,6 +35,7 @@
                         sizes="sm:640px md:768px lg:1024px xl:1280px"
                         :src="currentImage.filepath"
                         class="cover"
+                        format="webp"
                         :alt="currentImage.alt"
                         :preload="true"
                         :img-attrs="{
