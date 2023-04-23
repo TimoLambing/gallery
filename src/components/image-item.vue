@@ -13,8 +13,8 @@
             alt=""
         />
         <NuxtPicture
-            v-bind="dimensions"
             :id="image.idx"
+            sizes="sm:640px md:768px lg:1024px"
             :src="image.filepath"
             :loading="loading"
             :preload="preload"
@@ -28,11 +28,6 @@
 
 <script setup lang="ts">
 import type { ImageItemProps } from "@/types";
-
-const dimensions = {
-    width: 900,
-    height: 600,
-};
 
 defineProps<ImageItemProps>();
 </script>
