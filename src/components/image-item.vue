@@ -9,7 +9,6 @@
             :loading="loading"
             :preload="preload"
             :quality="1"
-            format="webp"
             class="w-full h-full rounded-lg object-cover blur-lg saturate-[2] absolute inset-0"
             alt=""
         />
@@ -20,7 +19,6 @@
             :loading="loading"
             :preload="preload"
             :quality="75"
-            format="webp"
             placeholder
             :alt="image.alt"
             :img-attrs="{ class: 'w-full h-full rounded-lg object-cover relative z-10 text-[0px]' }"
