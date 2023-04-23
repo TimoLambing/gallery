@@ -18,6 +18,7 @@
             :src="image.filepath"
             :loading="loading"
             :preload="preload"
+            :quality="75"
             placeholder
             :alt="image.alt"
             :img-attrs="{ class: 'w-full h-full rounded-lg object-cover relative z-10 text-[0px]' }"
