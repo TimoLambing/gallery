@@ -32,10 +32,10 @@
                         </div>
                     </Transition>
                     <NuxtPicture
+                        sizes="sm:640px md:768px lg:1024px xl:1280px"
                         :src="currentImage.filepath"
                         class="cover"
                         :alt="currentImage.alt"
-                        :quality="75"
                         :preload="true"
                         :img-attrs="{
                             class: 'max-h-[40rem] h-auto aspect-auto brightness-110 text-[0px]',
