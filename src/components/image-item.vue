@@ -12,16 +12,16 @@
             class="w-full h-full rounded-lg object-cover blur-lg saturate-[2] absolute inset-0"
             alt=""
         />
-        <NuxtPicture
+        <NuxtImg
             :id="image.idx"
-            sizes="sm:640px md:768px lg:1024px"
+            sizes="sm:320px lg:640px xl:768px"
             :src="image.filepath"
             :loading="loading"
             :preload="preload"
             :quality="75"
             placeholder
             :alt="image.alt"
-            :img-attrs="{ class: 'w-full h-full rounded-lg object-cover relative z-10 text-[0px]' }"
+            class="w-full h-full rounded-lg object-cover relative z-10 text-[0px]"
         />
         <span class="sr-only">{{ image.alt }}</span>
     </NuxtLink>
