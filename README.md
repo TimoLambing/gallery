@@ -1,5 +1,7 @@
 # Gallery - a PWA image gallery made with Nuxt 3 :tada:
 
+![Preview](https://user-images.githubusercontent.com/47639656/234034769-ed5d137e-7abf-4b37-a42f-14652a325d10.png)
+
 ## :sparkles: Features
 
 -   Self-hosted (just copy your images to src/public/images)
