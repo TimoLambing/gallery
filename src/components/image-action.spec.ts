@@ -50,7 +50,7 @@ describe("ImageAction", async () => {
 
         await button.trigger("click");
 
-        expect(windowSpy).toHaveBeenCalledWith(exampleImage.src, "_blank");
+        expect(windowSpy).toHaveBeenCalledWith(exampleImage.filepath, "_blank");
     });
 
     it("should download image when action is type download", async () => {

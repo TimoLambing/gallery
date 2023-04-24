@@ -34,7 +34,7 @@ const handleClick = (e: MouseEvent) => {
             router.push("/");
             break;
         case "source":
-            window.open(props.image.src, "_blank");
+            window.open(props.image.filepath, "_blank");
             break;
         case "download":
             downloadImage(props.image);

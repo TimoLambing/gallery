@@ -43,7 +43,7 @@ test.describe("Image Gallery", () => {
         const newPage = await pagePromise;
         await newPage.waitForLoadState();
 
-        expect(newPage.url()).toContain(exampleImage.src);
+        expect(newPage.url()).toContain(exampleImage.filepath);
     });
 
     //navigation with keypress and touch swipe
