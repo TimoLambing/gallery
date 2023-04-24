@@ -23,7 +23,7 @@ export const getImages = (): Image[] => {
 
 export const downloadImage = (image: Image) => {
     const a = document.createElement("a");
-    a.setAttribute("href", image.src);
+    a.setAttribute("href", image.filepath);
     a.setAttribute("download", image.filename);
     document.body.appendChild(a);
     a.click();

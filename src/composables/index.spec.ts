@@ -100,14 +100,14 @@ describe("downloadImage", () => {
     };
     it("should download correctly", () => {
         /* eslint-disable  @typescript-eslint/no-explicit-any */
-        const mLink = {
+        const mockLink = {
             href: "",
             click: vi.fn(),
             download: "",
             setAttribute: vi.fn(),
         } as any;
 
-        const createElementSpy = vi.spyOn(document, "createElement").mockReturnValueOnce(mLink);
+        const createElementSpy = vi.spyOn(document, "createElement").mockReturnValueOnce(mockLink);
         document.body.appendChild = vi.fn();
         document.body.removeChild = vi.fn();
 
@@ -115,16 +115,16 @@ describe("downloadImage", () => {
 
         expect(createElementSpy).toBeCalledWith("a");
 
-        expect(mLink.setAttribute.mock.calls.length).toBe(2);
+        expect(mockLink.setAttribute.mock.calls.length).toBe(2);
 
-        expect(mLink.setAttribute.mock.calls[0]).toEqual(["href", exampleImage.src]);
-        expect(mLink.setAttribute.mock.calls[1]).toEqual(["download", exampleImage.filename]);
+        expect(mockLink.setAttribute.mock.calls[0]).toEqual(["href", exampleImage.filepath]);
+        expect(mockLink.setAttribute.mock.calls[1]).toEqual(["download", exampleImage.filename]);
 
-        expect(document.body.appendChild).toBeCalledWith(mLink);
+        expect(document.body.appendChild).toBeCalledWith(mockLink);
 
-        expect(mLink.click).toBeCalled();
+        expect(mockLink.click).toBeCalled();
 
-        expect(document.body.removeChild).toBeCalledWith(mLink);
+        expect(document.body.removeChild).toBeCalledWith(mockLink);
     });
 });
 

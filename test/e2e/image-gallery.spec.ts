@@ -30,7 +30,7 @@ test.describe("Image Gallery", () => {
 
         const info = await download;
 
-        expect(info.url()).toContain(exampleImage.src);
+        expect(info.url()).toContain(exampleImage.filepath);
     });
 
     test("it opens original image in new tab on click of source button", async ({ page, context }) => {
