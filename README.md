@@ -1,7 +1,5 @@
 # Gallery - a PWA image gallery made with Nuxt 3 :tada:
 
-https://user-images.githubusercontent.com/47639656/219707847-9f3e63ca-af86-4d0a-9f0a-dcf2c9ccf1da.mp4
-
 ## :sparkles: Features
 
 -   Self-hosted (just copy your images to src/public/images)
@@ -25,9 +23,14 @@ Alt image descriptions are generated from the filenames.
 -   https://unsplash.com/photos/PNKwdJ8WetM Atacama Desert Chile
 -   https://unsplash.com/photos/9DgwO_ihqL0 Hallstätter See
 -   https://unsplash.com/photos/OtXJhYjbKeg Wadi Rum Village, Giordania
--   https://unsplash.com/photos/ylFewI4W6UQ Finding nemo
--   https://unsplash.com/photos/ln5drpv_ImI purple night sky
+-   https://unsplash.com/photos/ln5drpv_ImI Night sky Cima d'Asta, Scurelle, Italy
 -   https://unsplash.com/photos/c6av7odz1yI Ebeltoft, Denmark
+-   https://unsplash.com/photos/yt39XjxwGUE Llama
+-   https://unsplash.com/photos/0vyCopn4ytc Red panda
+-   https://unsplash.com/photos/C1BjxQCqba0 Raccoon
+-   https://unsplash.com/photos/E18nZ_OHh04 Kitten
+-   https://unsplash.com/photos/5Qqkjn4PFPA Aurora Borealis
+-   https://unsplash.com/photos/iiRuvE0TSWM Victoria Peak, HK
 
 ## :oncoming_police_car: Roadmap:
 

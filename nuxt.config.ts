@@ -19,12 +19,17 @@ export default defineNuxtConfig({
                 "@/*": "src/*",
             },
         },
+        plugins: [
+            {
+                name: "vite-plugin-",
+            },
+        ],
     },
     modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "vite-plugin-vue-type-imports/nuxt", "@kevinmarrec/nuxt-pwa"],
     image: {
         provider: "vercel",
         screens: {
-            xxxs: 30,
+            xxxs: 10,
             xxs: 240,
             xs: 320,
             sm: 640,

@@ -11,13 +11,13 @@ const useNavigateWithTransition = (direction?: "PREV" | "NEXT", image?: Image) =
 
         if (direction) {
             currentImage.value = images[getNextImageIndex(images, currentImage.value.idx, direction)];
+            router.push(`/p/${currentImage.value.idx}`);
         }
 
-        if (image) {
+        if (image && image !== currentImage.value) {
             currentImage.value = image;
+            router.push(`/p/${currentImage.value.idx}`);
         }
-
-        router.push(`/p/${currentImage.value.idx}`);
 
         setTimeout(() => {
             show.value = true;

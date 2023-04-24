@@ -11,3 +11,4 @@ drafts
 .netlify
 auto-imports.d.ts
 .env.example
+.vercel

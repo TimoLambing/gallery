@@ -2,11 +2,11 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Image Gallery", () => {
     const exampleImage = {
+        alt: "Hallstatter See Austria",
+        filename: "Hallstatter-See-Austria.jpg",
+        filepath: "/images/Hallstatter-See-Austria.jpg",
         idx: 1,
-        filename: "Finding-nemo.jpg",
-        filepath: "/images/Finding-nemo.jpg",
-        alt: "Finding nemo",
-        src: "/_nuxt/public/images/Finding-nemo.jpg",
+        src: "/_nuxt/public/images/Hallstatter-See-Austria.jpg",
     };
 
     test("it returns to home on click of close button", async ({ page }) => {
@@ -33,7 +33,7 @@ test.describe("Image Gallery", () => {
         expect(info.url()).toContain(exampleImage.src);
     });
 
-    test("it opens original unoptimised image in new tab on click of source button", async ({ page, context }) => {
+    test("it opens original image in new tab on click of source button", async ({ page, context }) => {
         await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
 
         const pagePromise = context.waitForEvent("page");

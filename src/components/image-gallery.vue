@@ -8,10 +8,11 @@
             <NuxtImg
                 v-if="show"
                 :key="currentImage.idx"
+                format="webp"
+                :preload="true"
                 :src="currentImage.filepath"
                 :quality="1"
-                :width="30"
-                :preload="true"
+                :width="10"
                 alt="background"
                 class="absolute inset-0 w-full h-full object-cover blur-xl brightness-[0.25]"
             />
@@ -32,14 +33,13 @@
                         </div>
                     </Transition>
                     <NuxtPicture
-                        sizes="sm:640px md:768px lg:1024px xl:1280px"
+                        :quality="75"
                         :src="currentImage.filepath"
-                        class="cover"
+                        :img-attrs="{
+                            class: 'max-h-[40rem] w-auto h-auto aspect-auto brightness-110 text-transparent',
+                        }"
                         :alt="currentImage.alt"
                         :preload="true"
-                        :img-attrs="{
-                            class: 'max-h-[40rem] h-auto aspect-auto brightness-110 text-[0px]',
-                        }"
                     />
                 </div>
             </Transition>

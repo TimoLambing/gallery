@@ -17,12 +17,13 @@
                 @click="handleClick(i)"
             >
                 <NuxtImg
-                    :preload="true"
                     :alt="i.alt"
+                    format="webp"
                     :src="i.filepath"
+                    :loading="i.idx === currentImage.idx ? 'eager' : 'lazy'"
                     :width="240"
-                    :quality="50"
-                    class="w-full h-full object-cover object-center"
+                    :quality="75"
+                    class="w-full h-full object-cover object-center text-transparent"
                 />
             </button>
         </div>
