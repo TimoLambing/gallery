@@ -10,7 +10,7 @@
                 :key="currentImage.idx"
                 format="webp"
                 :preload="true"
-                :src="currentImage.filepath"
+                :src="currentImage.src"
                 :quality="1"
                 :width="10"
                 alt="background"
@@ -34,7 +34,7 @@
                     </Transition>
                     <NuxtPicture
                         :quality="55"
-                        :src="currentImage.filepath"
+                        :src="currentImage.src"
                         :img-attrs="{
                             class: 'max-h-[40rem] w-auto h-auto aspect-auto brightness-110 text-transparent',
                         }"

@@ -19,7 +19,7 @@
                 <NuxtImg
                     :alt="i.alt"
                     format="webp"
-                    :src="i.filepath"
+                    :src="i.src"
                     :loading="i.idx === currentImage.idx ? 'eager' : 'lazy'"
                     :width="240"
                     :quality="75"

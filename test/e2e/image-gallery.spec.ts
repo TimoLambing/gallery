@@ -2,11 +2,10 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Image Gallery", () => {
     const exampleImage = {
-        alt: "Hallstatter See Austria",
-        filename: "Hallstatter-See-Austria.jpg",
-        filepath: "/images/Hallstatter-See-Austria.jpg",
         idx: 1,
-        src: "/_nuxt/public/images/Hallstatter-See-Austria.jpg",
+        filename: "Hallstatter-See-Austria.jpg",
+        alt: "Hallstatter See Austria",
+        src: "/_nuxt/.../Hallstatter-See-Austria.jpg",
     };
 
     test("it returns to home on click of close button", async ({ page }) => {
@@ -30,7 +29,7 @@ test.describe("Image Gallery", () => {
 
         const info = await download;
 
-        expect(info.url()).toContain(exampleImage.filepath);
+        expect(info.url()).toContain(exampleImage.filename);
     });
 
     test("it opens original image in new tab on click of source button", async ({ page, context }) => {
@@ -43,7 +42,7 @@ test.describe("Image Gallery", () => {
         const newPage = await pagePromise;
         await newPage.waitForLoadState();
 
-        expect(newPage.url()).toContain(exampleImage.filepath);
+        expect(newPage.url()).toContain(exampleImage.filename);
     });
 
     //navigation with keypress and touch swipe
@@ -62,20 +61,20 @@ test.describe("Image Gallery", () => {
 
             await page.keyboard.down(k);
 
-            await page.waitForURL("/p/0");
+            await page.waitForURL(`/p/${exampleImage.idx - 1}`);
 
-            await expect(page).toHaveURL("/p/0");
+            await expect(page).toHaveURL(`/p/${exampleImage.idx - 1}`);
         });
     }
     for (const k of ["ArrowRight", "ArrowDown", "d", "D", "s", "S"]) {
         test(`it navigates on ${k} keypress to next image`, async ({ page }) => {
-            await page.goto("/p/0", { waitUntil: "networkidle" });
+            await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
 
             await page.keyboard.down(k);
 
-            await page.waitForURL("/p/1");
+            await page.waitForURL(`/p/${exampleImage.idx + 1}`);
 
-            await expect(page).toHaveURL("/p/1");
+            await expect(page).toHaveURL(`/p/${exampleImage.idx + 1}`);
         });
     }
 });

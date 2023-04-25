@@ -1,9 +1,8 @@
 import { filename as getFileName } from "pathe/utils";
 import slugify from "slugify";
-
 import type { Image } from "@/types";
 
-const imageGlob = import.meta.glob("@/public/images/*.{jpg,jpeg,png,webp}", {
+const imageGlob = import.meta.glob("../../images/*.{jpg,jpeg,png,webp}", {
     eager: true,
 });
 
@@ -13,7 +12,6 @@ export const getImages = (): Image[] => {
         return {
             idx: index,
             filename: key.split("/").pop()!,
-            filepath: `/images/${key.split("/").pop()}`,
             alt: slugify(filename).replaceAll("-", " "),
             src: (value as unknown as { default: string }).default,
         };
@@ -23,7 +21,7 @@ export const getImages = (): Image[] => {
 
 export const downloadImage = (image: Image) => {
     const a = document.createElement("a");
-    a.setAttribute("href", image.filepath);
+    a.setAttribute("href", image.src);
     a.setAttribute("download", image.filename);
     document.body.appendChild(a);
     a.click();

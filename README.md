@@ -9,13 +9,13 @@
 -   WASD / Arrow key / touch navigation
 -   Image support includes `.webp` `.jpg` `.png` formats + [more!](https://v1.image.nuxtjs.org/components/nuxt-img#format)
 -   Support of different aspect ratios
--   [PWA functionality]() provided by [@kevinmarrec/nuxt-pwa](https://github.com/kevinmarrec/nuxt-pwa-module)
+-   PWA functionality provided by [@kevinmarrec/nuxt-pwa](https://github.com/kevinmarrec/nuxt-pwa-module)
 -   Image optimisation, provided by [@nuxt/image-edge](https://github.com/nuxt/image)
 -   Tailwind CSS for styling
 -   ESLint + Prettier for code format and styling
 -   Vitest + Vue test utils + Nuxt Devtools + Playwright for tests
 
-All your images are automatically imported from the `src/public/images` folder!
+All your images are automatically imported from the `images` folder!
 Alt image descriptions are generated from the filenames.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fc1llo%2Fgallery)
@@ -48,7 +48,7 @@ These instructions will help you set up a production deployment as fast as possi
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fc1llo%2Fgallery)
 
-2. Delete all images in `src/public/images` and replace with your own.
+2. Delete all images in `images` and replace with your own.
 
 3. Commit & push changes to see your brand new image gallery in action!
 
@@ -109,11 +109,11 @@ It works out of the box and by default the vercel provider is used by `@nuxt/ima
 
 ## Important directories
 
+-   `images` stores all your images
 -   `src`
     -   `src/components`
     -   `src/composables`
     -   `src/pages`
-    -   `src/public/images` stores all the original image files
     -   `src/types`
 -   `test`
     -   `test/e2e` stores all Playwright E2E tests

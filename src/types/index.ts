@@ -1,7 +1,6 @@
 export type Image = {
     idx: number;
     filename: string;
-    filepath: string;
     alt: string;
     src: string;
 };

@@ -9,7 +9,6 @@ import * as composables from "@/composables";
 const exampleImage: Image = {
     idx: 0,
     filename: "Atacama-Desert-Chile.jpg",
-    filepath: "/images/Atacama-Desert-Chile.jpg",
     alt: "Atacama Desert Chile",
     src: "/_nuxt/public/images/Atacama-Desert-Chile.jpg",
 };
@@ -50,7 +49,7 @@ describe("ImageAction", async () => {
 
         await button.trigger("click");
 
-        expect(windowSpy).toHaveBeenCalledWith(exampleImage.filepath, "_blank");
+        expect(windowSpy).toHaveBeenCalledWith(exampleImage.src, "_blank");
     });
 
     it("should download image when action is type download", async () => {
