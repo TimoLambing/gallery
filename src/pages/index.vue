@@ -21,7 +21,6 @@
                         :id="image.idx"
                         sizes="lg:640px"
                         :width="640"
-                        :height="320"
                         format="webp"
                         decoding="async"
                         :src="image.filepath"
