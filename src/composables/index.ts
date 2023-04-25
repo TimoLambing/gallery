@@ -1,6 +1,5 @@
 import { filename as getFileName } from "pathe/utils";
 import slugify from "slugify";
-import config from "../../nuxt.config";
 import type { Image } from "@/types";
 
 const imageGlob = import.meta.glob("../../images/*.{jpg,jpeg,png,webp}", {

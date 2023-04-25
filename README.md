@@ -38,7 +38,6 @@ Alt text is generated from the filenames.
 
 -   [x] Initial release
 -   [ ] Add authentication support
--   [ ] Full SSG support for the ipx provider
 
 ## :rocket: Quick Start
 
@@ -51,6 +50,8 @@ These instructions will help you set up a production deployment as fast as possi
 2. Delete all images in `images` and replace with your own.
 
 3. Commit & push changes to see your brand new image gallery in action!
+
+For deploying with any other method, only the ipx provider is officially supported.
 
 ## :computer: Local Development
 
