@@ -4,7 +4,10 @@
 
 ## :sparkles: Features
 
--   Self-hosted (just copy your images to src/public/images)
+All your images are automatically imported from the `images` folder.
+Alt text is generated from the filenames.
+
+-   Self-hosted (just copy your images to `images`)
 -   Can be hosted on any static site hosting with Nuxt generate
 -   WASD / Arrow key / touch navigation
 -   Image support includes `.webp` `.jpg` `.png` formats + [more!](https://v1.image.nuxtjs.org/components/nuxt-img#format)
@@ -14,9 +17,6 @@
 -   Tailwind CSS for styling
 -   ESLint + Prettier for code format and styling
 -   Vitest + Vue test utils + Nuxt Devtools + Playwright for tests
-
-All your images are automatically imported from the `images` folder!
-Alt image descriptions are generated from the filenames.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fc1llo%2Fgallery)
 
