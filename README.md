@@ -1,6 +1,6 @@
 # Gallery - a PWA image gallery made with Nuxt 3 :tada:
 
-![gallery preview](https://user-images.githubusercontent.com/47639656/234035274-bf4df3fa-da1c-4779-9531-988ad8237173.jpg)
+[![gallery preview](https://user-images.githubusercontent.com/47639656/234035274-bf4df3fa-da1c-4779-9531-988ad8237173.jpg)](https://gallery-nuxt.vercel.app/)
 
 ## :sparkles: Features
 
