@@ -33,7 +33,7 @@
                         </div>
                     </Transition>
                     <NuxtPicture
-                        :quality="75"
+                        :quality="55"
                         :src="currentImage.filepath"
                         :img-attrs="{
                             class: 'max-h-[40rem] w-auto h-auto aspect-auto brightness-110 text-transparent',
