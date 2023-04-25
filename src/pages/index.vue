@@ -10,7 +10,7 @@
                 >
                     <NuxtImg
                         format="webp"
-                        :src="image.src"
+                        :src="getImageSrc(image)"
                         loading="lazy"
                         :width="10"
                         :quality="1"
@@ -23,7 +23,7 @@
                         :width="640"
                         format="webp"
                         decoding="async"
-                        :src="image.src"
+                        :src="getImageSrc(image)"
                         :preload="image.idx < 16"
                         :loading="image.idx < 16 ? 'eager' : 'lazy'"
                         placeholder
@@ -39,9 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { getImages } from "@/composables";
+import { getImages, getImageSrc } from "@/composables";
 
 const images = getImages();
-
-console.log(images);
 </script>

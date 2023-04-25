@@ -19,7 +19,7 @@
                 <NuxtImg
                     :alt="i.alt"
                     format="webp"
-                    :src="i.src"
+                    :src="getImageSrc(i)"
                     :loading="i.idx === currentImage.idx ? 'eager' : 'lazy'"
                     :width="240"
                     :quality="75"
@@ -32,6 +32,7 @@
 
 <script setup lang="ts">
 import type { Image } from "@/types";
+import { getImages, getImageSrc } from "@/composables";
 
 const images = getImages();
 

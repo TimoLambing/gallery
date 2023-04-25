@@ -1,5 +1,6 @@
 import { filename as getFileName } from "pathe/utils";
 import slugify from "slugify";
+import config from "../../nuxt.config";
 import type { Image } from "@/types";
 
 const imageGlob = import.meta.glob("../../images/*.{jpg,jpeg,png,webp}", {
@@ -32,4 +33,20 @@ export const getNextImageIndex = (images: Image[], currentIndex: number, directi
     const delta = direction === "PREV" ? -1 : 1;
     const nextIndex = (currentIndex + delta + images.length) % images.length;
     return nextIndex;
+};
+
+/**
+ * @description Returns the image source based on the provider. Currently supported providers are vercel and ipx.
+ */
+export const getImageSrc = (image: Image) => {
+    const $img = useImage();
+
+    switch ($img.options.provider) {
+        case "vercel":
+            return image.src;
+        case "ipx":
+            return image.filename;
+        default:
+            return image.src;
+    }
 };
