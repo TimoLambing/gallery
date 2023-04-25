@@ -27,7 +27,7 @@
                         :preload="image.idx < 16"
                         :loading="image.idx < 16 ? 'eager' : 'lazy'"
                         placeholder
-                        :quality="75"
+                        :quality="55"
                         :alt="image.alt"
                         class="w-full h-full rounded-lg object-cover relative z-10 text-[0px] duration-200"
                     />
