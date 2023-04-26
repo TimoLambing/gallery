@@ -1,8 +1,10 @@
 export type Image = {
     idx: number;
+    src: string;
     filename: string;
     alt: string;
-    src: string;
+    width: number;
+    height: number;
 };
 
 export type ImageItemProps = {

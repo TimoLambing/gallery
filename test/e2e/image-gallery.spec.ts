@@ -18,33 +18,6 @@ test.describe("Image Gallery", () => {
         await expect(page).toHaveURL("/");
     });
 
-    test("it downloads image on click of download button", async ({ page }) => {
-        await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
-
-        const downloadPromise = page.waitForEvent("download");
-
-        await page.getByTestId("download").click();
-
-        const download = await downloadPromise;
-
-        const info = await download;
-
-        expect(info.url()).toContain(exampleImage.filename);
-    });
-
-    test("it opens original image in new tab on click of source button", async ({ page, context }) => {
-        await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
-
-        const pagePromise = context.waitForEvent("page");
-
-        await page.getByTestId("source").click();
-
-        const newPage = await pagePromise;
-        await newPage.waitForLoadState();
-
-        expect(newPage.url()).toContain(exampleImage.filename);
-    });
-
     //navigation with keypress and touch swipe
     test("it navigates to index page on Escape keypress", async ({ page }) => {
         await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });

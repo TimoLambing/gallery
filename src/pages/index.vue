@@ -11,7 +11,6 @@
                     <NuxtImg
                         format="webp"
                         :src="getImageSrc(image)"
-                        loading="lazy"
                         :width="10"
                         :quality="1"
                         class="w-full h-full rounded-lg object-cover blur-lg saturate-[2] absolute inset-0"
@@ -19,17 +18,13 @@
                     />
                     <NuxtImg
                         :id="image.idx"
-                        sizes="lg:640px"
                         :width="640"
+                        :quality="75"
                         format="webp"
-                        decoding="async"
                         :src="getImageSrc(image)"
-                        :preload="image.idx < 16"
-                        :loading="image.idx < 16 ? 'eager' : 'lazy'"
-                        placeholder
-                        :quality="55"
                         :alt="image.alt"
                         class="w-full h-full rounded-lg object-cover relative z-10 text-[0px] duration-200"
+                        :style="{ aspectRatio: image.width / image.height }"
                     />
                     <span class="sr-only">{{ image.alt }}</span>
                 </NuxtLink>

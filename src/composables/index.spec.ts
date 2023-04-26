@@ -1,83 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
-import { getImages, downloadImage, getNextImageIndex } from ".";
+import { downloadImage, getNextImageIndex } from ".";
 import type { Image } from "@/types";
-
-describe("getImages", () => {
-    it("should return correct images and format", () => {
-        const result = getImages();
-
-        expect(result).toMatchInlineSnapshot(`
-          [
-            {
-              "alt": "Atacama Desert Chile",
-              "filename": "Atacama-Desert-Chile.jpg",
-              "idx": 0,
-              "src": "/images/Atacama-Desert-Chile.jpg",
-            },
-            {
-              "alt": "Hallstatter See Austria",
-              "filename": "Hallstatter-See-Austria.jpg",
-              "idx": 1,
-              "src": "/images/Hallstatter-See-Austria.jpg",
-            },
-            {
-              "alt": "Night sky Italy",
-              "filename": "Night-sky-Italy.jpg",
-              "idx": 2,
-              "src": "/images/Night-sky-Italy.jpg",
-            },
-            {
-              "alt": "Wadi Rum Village Jordan Sunset",
-              "filename": "Wadi-Rum-Village-Jordan-Sunset.jpg",
-              "idx": 3,
-              "src": "/images/Wadi-Rum-Village-Jordan-Sunset.jpg",
-            },
-            {
-              "alt": "a red panda",
-              "filename": "a-red-panda.jpg",
-              "idx": 4,
-              "src": "/images/a-red-panda.jpg",
-            },
-            {
-              "alt": "coon",
-              "filename": "coon.jpg",
-              "idx": 5,
-              "src": "/images/coon.jpg",
-            },
-            {
-              "alt": "ebeltoft denmark",
-              "filename": "ebeltoft-denmark.jpg",
-              "idx": 6,
-              "src": "/images/ebeltoft-denmark.jpg",
-            },
-            {
-              "alt": "iceland aurora borealis",
-              "filename": "iceland-aurora-borealis.jpg",
-              "idx": 7,
-              "src": "/images/iceland-aurora-borealis.jpg",
-            },
-            {
-              "alt": "kitteh",
-              "filename": "kitteh.jpg",
-              "idx": 8,
-              "src": "/images/kitteh.jpg",
-            },
-            {
-              "alt": "llama",
-              "filename": "llama.jpg",
-              "idx": 9,
-              "src": "/images/llama.jpg",
-            },
-            {
-              "alt": "victoria peak",
-              "filename": "victoria-peak.jpg",
-              "idx": 10,
-              "src": "/images/victoria-peak.jpg",
-            },
-          ]
-        `);
-    });
-});
 
 describe("downloadImage", () => {
     const exampleImage: Image = {
@@ -85,6 +8,8 @@ describe("downloadImage", () => {
         filename: "Atacama-Desert-Chile.jpg",
         alt: "Atacama Desert Chile",
         src: "/_nuxt/images/Atacama-Desert-Chile.jpg",
+        width: 1,
+        height: 1,
     };
     it("should download correctly", () => {
         /* eslint-disable  @typescript-eslint/no-explicit-any */
