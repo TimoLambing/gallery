@@ -37,7 +37,8 @@ Alt text is generated from the filenames.
 ## :oncoming_police_car: Roadmap:
 
 -   [x] Initial release
--   [ ] Add authentication support
+-   [ ] Further image optimisation for all supported providers. See [@nuxt/image issues](https://github.com/nuxt/image/issues).
+-   [ ] Add password authentication
 
 ## :rocket: Quick Start
 
