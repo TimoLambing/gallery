@@ -1,11 +1,12 @@
-import { getImages, getNextImageIndex } from "@/composables";
+import { getNextImageIndex } from "@/composables/utils";
+import useImages from "./useImages";
 import { Image } from "@/types";
 
 const useNavigateWithTransition = (direction?: "PREV" | "NEXT", image?: Image) => {
     const show = useShow();
     const currentImage = useCurrentImage();
     const router = useRouter();
-    const images = getImages();
+    const images = useImages();
     if (currentImage.value) {
         if (direction) {
             show.value = false;

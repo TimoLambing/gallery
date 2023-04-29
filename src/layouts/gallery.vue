@@ -8,9 +8,12 @@
 
 <script setup lang="ts">
 import { useRoute } from "vue-router";
+import useImages from "@/composables/useImages";
+import useCurrentImage from "@/composables/useCurrentImage";
+
 const route = useRoute();
 const currentImage = useCurrentImage();
-const images = getImages();
+const images = useImages();
 
 const fetchImage = () => {
     const image = ref(images.find((image) => image.idx == Number(route.params.idx)));

@@ -1,5 +1,6 @@
 import { onKeyStroke, useSwipe } from "@vueuse/core";
 import useNavigateWithTransition from "./useNavigateWithTransition";
+import { useRouter } from "vue-router";
 
 export const PREV_NAVIGATION_KEYS = ["ArrowLeft", "ArrowUp", "a", "A", "w", "W"];
 export const NEXT_NAVIGATION_KEYS = ["ArrowRight", "ArrowDown", "d", "D", "s", "S"];

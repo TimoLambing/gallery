@@ -4,13 +4,15 @@ import { describe, it, expect, vi, Mock } from "vitest";
 import { mount } from "@vue/test-utils";
 import { useRouter } from "vue-router";
 
-import * as composables from "@/composables";
+import * as utils from "@/composables/utils";
 
 const exampleImage: Image = {
     idx: 0,
     filename: "Atacama-Desert-Chile.jpg",
     alt: "Atacama Desert Chile",
     src: "/_nuxt/public/images/Atacama-Desert-Chile.jpg",
+    width: 1,
+    height: 1,
 };
 
 describe("ImageAction", async () => {
@@ -53,7 +55,7 @@ describe("ImageAction", async () => {
     });
 
     it("should download image when action is type download", async () => {
-        const downloadImageSpy = vi.spyOn(composables, "downloadImage");
+        const downloadImageSpy = vi.spyOn(utils, "downloadImage");
 
         const wrapper = mount(ImageAction, {
             props: <ImageActionProps>{

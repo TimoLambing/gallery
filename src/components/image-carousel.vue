@@ -32,9 +32,10 @@
 
 <script setup lang="ts">
 import type { Image } from "@/types";
-import { getImages, getImageSrc } from "@/composables";
+import { getImageSrc } from "@/composables/utils";
+import useImages from "@/composables/useImages";
 
-const images = getImages();
+const images = useImages();
 
 const transitionEnabled = ref(false);
 

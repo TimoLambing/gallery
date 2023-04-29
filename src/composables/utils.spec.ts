@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { downloadImage, getNextImageIndex } from ".";
+import { downloadImage, getNextImageIndex } from "./utils";
 import type { Image } from "@/types";
 
 describe("downloadImage", () => {
@@ -42,13 +42,16 @@ describe("downloadImage", () => {
 });
 
 describe("getNextImageIndex", () => {
+    const imageArrayLength = 5;
+    const imageArray = Array(5).fill(0);
+
     it("should give correct next index from zero in LEFT direction", () => {
-        const nextIndex = getNextImageIndex(Array(5).fill(0), 0, "PREV");
-        expect(nextIndex).toEqual(Array(5).fill(0).length - 1);
+        const nextIndex = getNextImageIndex(imageArray, 0, "PREV");
+        expect(nextIndex).toEqual(imageArrayLength - 1);
     });
 
     it("should give correct next index from highest index in RIGHT direction", () => {
-        const nextIndex = getNextImageIndex(Array(5).fill(0), 4, "NEXT");
+        const nextIndex = getNextImageIndex(imageArray, imageArrayLength - 1, "NEXT");
         expect(nextIndex).toEqual(0);
     });
 });

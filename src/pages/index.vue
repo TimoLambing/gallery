@@ -34,7 +34,8 @@
 </template>
 
 <script setup lang="ts">
-import { getImages, getImageSrc } from "@/composables";
+import { getImageSrc } from "@/composables/utils";
+import useImages from "@/composables/useImages";
 
-const images = getImages();
+const images = useImages();
 </script>
