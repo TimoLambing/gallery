@@ -28,7 +28,7 @@ devDependencies:
     specifier: 1.0.0-27919678.2f5b64b
     version: 1.0.0-27919678.2f5b64b
   '@nuxt/test-utils':
-    specifier: ^3.2.0
+    specifier: ^3.4.3
     version: 3.4.3(playwright@1.33.0)(vitest@0.27.3)(vue@3.2.47)
   '@nuxtjs/tailwindcss':
     specifier: ^6.4.0
@@ -48,6 +48,9 @@ devDependencies:
   '@vue/test-utils':
     specifier: ^2.2.10
     version: 2.3.2(vue@3.2.47)
+  consola:
+    specifier: ^3.1.0
+    version: 3.1.0
   eslint:
     specifier: ^8.34.0
     version: 8.39.0
