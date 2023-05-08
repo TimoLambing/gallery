@@ -3,12 +3,14 @@ import { test, expect } from "@playwright/test";
 test.describe("Image Gallery", () => {
     const exampleImage = {
         idx: 1,
+        src: "/images/Hallstatter-See-Austria.jpg",
         filename: "Hallstatter-See-Austria.jpg",
         alt: "Hallstatter See Austria",
-        src: "/_nuxt/.../Hallstatter-See-Austria.jpg",
+        width: 1920,
+        height: 1280,
     };
 
-    test("it returns to home on click of close button", async ({ page }) => {
+    test("it returns to index page on click of close button", async ({ page }) => {
         await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
 
         await page.getByTestId("close").click();
@@ -18,7 +20,37 @@ test.describe("Image Gallery", () => {
         await expect(page).toHaveURL("/");
     });
 
-    //navigation with keypress and touch swipe
+    test("it downloads image on click of download button", async ({ page }) => {
+        await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
+
+        const downloadPromise = page.waitForEvent("download");
+
+        await page.getByTestId("download").click();
+
+        const download = await downloadPromise;
+
+        const info = await download;
+
+        const downloadHasImagePathSuffix = info.url().endsWith(exampleImage.filename);
+
+        expect(downloadHasImagePathSuffix).toBeTruthy();
+    });
+
+    test("it opens original image in new tab on click of source button", async ({ page, context }) => {
+        await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
+
+        const pagePromise = context.waitForEvent("page");
+
+        await page.getByTestId("source").click();
+
+        const newPage = await pagePromise;
+        await newPage.waitForLoadState();
+
+        const urlHasImagePathSuffix = newPage.url().endsWith(exampleImage.filename);
+
+        expect(urlHasImagePathSuffix).toBeTruthy();
+    });
+
     test("it navigates to index page on Escape keypress", async ({ page }) => {
         await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
 
