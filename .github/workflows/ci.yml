@@ -7,23 +7,41 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-          - uses: actions/checkout@v3
-          - run: corepack enable
-          - uses: actions/setup-node@v3
-            with:
-              node-version: "16"
-              cache: "pnpm"
+            - uses: actions/checkout@v3
+            - run: corepack enable
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: "16"
+                  cache: "pnpm"
 
-          - name: Install dependencies
-            run: pnpm install --frozen-lockfile
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
 
-          - name: Run unit tests
-            run: pnpm test:unit
+            - name: Run unit tests
+              run: pnpm test:unit
 
     e2e:
         runs-on: ubuntu-latest
         container:
-          image: mcr.microsoft.com/playwright:v1.30.0-focal
+            image: mcr.microsoft.com/playwright:v1.36.2-focal
+
+        steps:
+            - uses: actions/checkout@v3
+            - run: corepack enable
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: "16"
+                  cache: "pnpm"
+
+            - name: Install dependencies
+              run: |
+                  pnpm install --frozen-lockfile
+                  npx playwright install
+
+            - run: pnpm test:e2e
+
+    lint:
+        runs-on: ubuntu-latest
 
         steps:
             - uses: actions/checkout@v3
@@ -36,21 +54,5 @@ jobs:
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
 
-            - run: pnpm test:e2e
-
-    lint:
-        runs-on: ubuntu-latest
-
-        steps:
-          - uses: actions/checkout@v3
-          - run: corepack enable
-          - uses: actions/setup-node@v3
-            with:
-              node-version: "16"
-              cache: "pnpm"
-
-          - name: Install dependencies
-            run: pnpm install --frozen-lockfile
-
-          - name: Lint
-            run: pnpm lint
+            - name: Lint
+              run: pnpm lint
