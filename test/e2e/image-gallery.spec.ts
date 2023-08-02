@@ -1,5 +1,4 @@
 import { test, expect } from "@playwright/test";
-import fs from "fs/promises";
 
 test.describe("Image Gallery", () => {
     const exampleImage = {
@@ -10,7 +9,6 @@ test.describe("Image Gallery", () => {
         width: 1920,
         height: 1280,
     };
-    const relativeExampleImagePath = "../../images/Hallstatter-See-Austria.jpg";
 
     test("it returns to index page on click of close button", async ({ page }) => {
         await page.goto(`/p/${exampleImage.idx}`, { waitUntil: "networkidle" });
