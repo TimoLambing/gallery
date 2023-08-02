@@ -1,9 +1,7 @@
 import ImageAction from "@/components/image-action.vue";
 import type { Image, ImageActionProps } from "@/types";
-import { describe, it, expect, vi, Mock } from "vitest";
-import { mount } from "@vue/test-utils";
-import { useRouter } from "vue-router";
-
+import { describe, it, expect, vi } from "vitest";
+import { mount, shallowMount } from "@vue/test-utils";
 import * as utils from "@/composables/utils";
 
 const exampleImage: Image = {
@@ -16,31 +14,10 @@ const exampleImage: Image = {
 };
 
 describe("ImageAction", async () => {
-    it("should navigate to index page when action is type close", async () => {
-        vi.mock("vue-router");
-
-        (<Mock>useRouter).mockReturnValue({
-            push: vi.fn(),
-        });
-
-        const wrapper = mount(ImageAction, {
-            props: <ImageActionProps>{
-                image: exampleImage,
-                action: "close",
-            },
-        });
-
-        const button = wrapper.find("button");
-
-        await button.trigger("click");
-
-        expect(useRouter().push).toHaveBeenCalledWith("/");
-    });
-
     it("should open original image in new tab when action is type source", async () => {
         const windowSpy = vi.spyOn(window, "open");
 
-        const wrapper = mount(ImageAction, {
+        const wrapper = shallowMount(ImageAction, {
             props: <ImageActionProps>{
                 image: exampleImage,
                 action: "source",

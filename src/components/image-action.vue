@@ -12,11 +12,10 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import { downloadImage } from "@/composables/utils";
 import { ArrowUpRightIcon, XMarkIcon, ArrowDownOnSquareIcon } from "@heroicons/vue/20/solid";
 import type { ImageActionProps } from "@/types";
-
-import { useRouter } from "vue-router";
 
 const router = useRouter();
 
